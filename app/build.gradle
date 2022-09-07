@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+  compileSdk 30
+  defaultConfig {
+    applicationId "com.clarity.android.interview"
+    minSdk 21
+    targetSdk 30
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation "androidx.appcompat:appcompat:$androidXVersion"
+  implementation "androidx.recyclerview:recyclerview:1.2.1"
+  implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+
+  // Rx
+  implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+  implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+  implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
+
+  // Coroutines
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+  implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
+
+  implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+  implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+  implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+
+  implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+  implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+
+  testImplementation 'junit:junit:4.13.2'
+  androidTestImplementation 'androidx.test:runner:1.4.1-alpha03'
+  androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha03'
+}
+repositories {
+  mavenCentral()
+}
